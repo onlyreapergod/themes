@@ -1,0 +1,55 @@
+name: Build & Release
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET 10
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+          dotnet-quality: 'ga'
+
+      - name: Publish (self-contained, single file)
+        run: dotnet publish Win11ProSuite/Win11ProSuite.csproj -c Release -o ./publish
+
+      - name: Ensure Inno Setup 6 is installed
+        shell: pwsh
+        run: |
+          $iscc = "C:\Program Files (x86)\Inno Setup 6\ISCC.exe"
+          if (-not (Test-Path $iscc)) {
+            choco install innosetup --no-progress -y
+          }
+          if (-not (Test-Path $iscc)) { throw "ISCC.exe not found at $iscc" }
+
+      - name: Build installer
+        shell: pwsh
+        run: '& "C:\Program Files (x86)\Inno Setup 6\ISCC.exe" setup.iss'
+
+      - name: Create or update GitHub Release v1.0.0
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          $asset = "./installer_out/Win11ProSuite-Setup.exe"
+          gh release view v1.0.0 --repo "${{ github.repository }}" *> $null
+          if ($LASTEXITCODE -eq 0) {
+            gh release upload v1.0.0 $asset --clobber --repo "${{ github.repository }}"
+            if ($LASTEXITCODE -ne 0) { exit 1 }
+            gh release edit v1.0.0 --latest --repo "${{ github.repository }}"
+            if ($LASTEXITCODE -ne 0) { exit 1 }
+          } else {
+            gh release create v1.0.0 $asset --title "Win11ProSuite v1.0.0" --notes "Free 1-click installer for Win11ProSuite (Windows 10 & 11). Download Win11ProSuite-Setup.exe and run it." --latest --target "${{ github.sha }}" --repo "${{ github.repository }}"
+            if ($LASTEXITCODE -ne 0) { exit 1 }
+          }

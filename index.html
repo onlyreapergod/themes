@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Win11ProSuite – Free for Windows 10 &amp; 11</title>
+<meta name="description" content="Win11ProSuite: turbo animations, dynamic media island, centered dock, startup control and 1-click backup &amp; restore. 100% free.">
+<style>
+  :root {
+    --bg: #18181C;
+    --card: #222228;
+    --card-2: #2A2A31;
+    --border: #34343C;
+    --text: #F3F3F6;
+    --muted: #A5A5B0;
+    --accent: #4C8DFF;
+    --accent-hover: #6AA0FF;
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: "Segoe UI Variable", "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
+    line-height: 1.55;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
+  nav { display: flex; align-items: center; justify-content: space-between; padding: 20px 0; }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 600; font-size: 15px; color: var(--text); }
+  .logo { width: 28px; height: 28px; border-radius: 8px; background: var(--accent); display: grid; place-items: center; font-size: 15px; }
+  nav a.gh { color: var(--muted); font-size: 14px; }
+  nav a.gh:hover { color: var(--text); }
+
+  .hero { display: flex; gap: 32px; align-items: center; padding: 40px 0 48px; flex-wrap: wrap; }
+  .app-icon {
+    width: 128px; height: 128px; border-radius: 28px; flex: none;
+    background: linear-gradient(135deg, #4C8DFF, #2E5FD0);
+    display: grid; place-items: center; font-size: 60px;
+    box-shadow: 0 16px 40px rgba(76,141,255,.28);
+  }
+  .hero-text { flex: 1; min-width: 260px; }
+  h1 { margin: 0; font-size: 40px; font-weight: 600; letter-spacing: -.5px; }
+  .tagline { color: var(--muted); margin: 6px 0 18px; font-size: 17px; }
+  .meta { display: flex; flex-wrap: wrap; gap: 8px 22px; color: var(--muted); font-size: 13.5px; margin-bottom: 22px; }
+  .meta b { color: var(--text); font-weight: 600; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--accent); color: #0B1530; font-weight: 600; font-size: 16px;
+    padding: 14px 34px; border-radius: 8px; transition: background .15s, transform .1s;
+  }
+  .btn:hover { background: var(--accent-hover); }
+  .btn:active { transform: scale(.98); }
+  .free-badge { margin-left: 14px; color: var(--muted); font-size: 13.5px; }
+  .note { color: var(--muted); font-size: 12.5px; margin-top: 12px; }
+
+  h2 { font-size: 24px; font-weight: 600; margin: 56px 0 18px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 22px; }
+  .card:hover { background: var(--card-2); }
+  .glyph { width: 42px; height: 42px; border-radius: 10px; background: rgba(76,141,255,.15); display: grid; place-items: center; font-size: 21px; margin-bottom: 14px; }
+  .card h3 { margin: 0 0 6px; font-size: 17px; font-weight: 600; }
+  .card p { margin: 0; color: var(--muted); font-size: 14.5px; }
+
+  .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; counter-reset: s; }
+  .step { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 22px; position: relative; }
+  .step::before {
+    counter-increment: s; content: counter(s);
+    display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%;
+    background: var(--accent); color: #0B1530; font-weight: 700; margin-bottom: 12px;
+  }
+  .step h3 { margin: 0 0 6px; font-size: 16px; }
+  .step p { margin: 0; color: var(--muted); font-size: 14.5px; }
+
+  .cta { text-align: center; background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 40px 24px; margin: 56px 0; }
+  .cta h2 { margin: 0 0 8px; }
+  .cta p { color: var(--muted); margin: 0 0 22px; }
+
+  footer { color: var(--muted); font-size: 13px; text-align: center; padding: 8px 0 40px; }
+  @media (max-width: 560px) { h1 { font-size: 32px; } .app-icon { width: 96px; height: 96px; font-size: 44px; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav>
+    <div class="brand"><div class="logo">⚡</div> Win11ProSuite</div>
+    <a class="gh" href="https://github.com/onlyreapergod/themes">View on GitHub</a>
+  </nav>
+
+  <header class="hero">
+    <div class="app-icon">🪟</div>
+    <div class="hero-text">
+      <h1>Win11ProSuite</h1>
+      <div class="tagline">Make Windows faster, cleaner and prettier – in one click.</div>
+      <div class="meta">
+        <span>Version <b id="version">1.0.0</b></span>
+        <span>Size <b id="size">~</b></span>
+        <span>Windows <b>10 &amp; 11 (64-bit)</b></span>
+        <span><b>Free</b> · No account · No license key</span>
+      </div>
+      <a class="btn" id="get" href="https://github.com/onlyreapergod/themes/releases/latest/download/Win11ProSuite-Setup.exe">⬇ Get &amp; Install</a>
+      <span class="free-badge">100% free</span>
+      <div class="note">Installs for your user only – no administrator prompt.</div>
+    </div>
+  </header>
+
+  <section>
+    <h2>Features</h2>
+    <div class="grid">
+      <div class="card"><div class="glyph">⚡</div><h3>Turbo Animations</h3><p>Instant menus and snappier window animations using registry and Win32 tweaks.</p></div>
+      <div class="card"><div class="glyph">🎵</div><h3>Dynamic Media Island</h3><p>A floating top-center pill showing the current song, cover art and playback controls.</p></div>
+      <div class="card"><div class="glyph">▭</div><h3>Win11 Centered Dock</h3><p>Centers taskbar icons and gives the taskbar an acrylic look with rounded corners.</p></div>
+      <div class="card"><div class="glyph">🚀</div><h3>Launch on Startup</h3><p>Starts quietly in the background every time you sign in.</p></div>
+      <div class="card"><div class="glyph">💾</div><h3>1-Click Backup &amp; Restore</h3><p>Your original Windows settings are saved automatically. Restore the defaults any time with one button.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Install in 3 steps</h2>
+    <div class="steps">
+      <div class="step"><h3>Click “Get &amp; Install”</h3><p>Download <code>Win11ProSuite-Setup.exe</code> from GitHub Releases.</p></div>
+      <div class="step"><h3>Run the installer</h3><p>Open the file and press <b>Install</b>. If Windows SmartScreen appears, choose <b>More info → Run anyway</b>.</p></div>
+      <div class="step"><h3>Enjoy</h3><p>Win11ProSuite launches automatically and adds Start Menu and Desktop shortcuts.</p></div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <h2>Ready to try it?</h2>
+    <p>Free forever. Uninstall any time from Windows Settings.</p>
+    <a class="btn" href="https://github.com/onlyreapergod/themes/releases/latest/download/Win11ProSuite-Setup.exe">⬇ Get &amp; Install</a>
+  </section>
+
+  <footer>© Win11ProSuite · Not affiliated with Microsoft.</footer>
+</div>
+
+<script>
+  (async function () {
+    try {
+      const r = await fetch("https://api.github.com/repos/onlyreapergod/themes/releases/latest", { headers: { "Accept": "application/vnd.github+json" } });
+      if (!r.ok) return;
+      const rel = await r.json();
+      if (rel.tag_name) document.getElementById("version").textContent = rel.tag_name.replace(/^v/, "");
+      const asset = (rel.assets || []).find(a => a.name === "Win11ProSuite-Setup.exe");
+      if (asset) document.getElementById("size").textContent = (asset.size / 1048576).toFixed(1) + " MB";
+    } catch (e) { /* offline or rate-limited: keep defaults */ }
+  })();
+</script>
+</body>
+</html>

@@ -22,11 +22,11 @@ jobs:
           dotnet-quality: 'ga'
 
       - name: Publish (self-contained, single file)
-        run: dotnet publish Win11ProSuite/Win11ProSuite.csproj -c Release -o ./publish
+        run: dotnet publish Win11ProSuite.csproj -c Release -o ./publish
 
       - name: Ensure Inno Setup 6 is installed
         shell: pwsh
-        run:dotnet publish Win11ProSuite.csproj -c Release -o ./publish
+        run: |
           $iscc = "C:\Program Files (x86)\Inno Setup 6\ISCC.exe"
           if (-not (Test-Path $iscc)) {
             choco install innosetup --no-progress -y

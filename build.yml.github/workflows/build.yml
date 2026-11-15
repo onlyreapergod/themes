@@ -26,7 +26,7 @@ jobs:
 
       - name: Ensure Inno Setup 6 is installed
         shell: pwsh
-        run: |
+        run:dotnet publish Win11ProSuite.csproj -c Release -o ./publish
           $iscc = "C:\Program Files (x86)\Inno Setup 6\ISCC.exe"
           if (-not (Test-Path $iscc)) {
             choco install innosetup --no-progress -y
